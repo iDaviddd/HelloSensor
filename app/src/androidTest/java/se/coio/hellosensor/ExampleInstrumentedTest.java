@@ -1,4 +1,4 @@
-package se.coio.david;
+package se.coio.hellosensor;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("se.coio.david", appContext.getPackageName());
+        assertEquals("se.coio.hellosensor", appContext.getPackageName());
     }
 }

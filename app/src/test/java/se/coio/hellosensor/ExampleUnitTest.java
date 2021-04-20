@@ -1,4 +1,4 @@
-package se.coio.david;
+package se.coio.hellosensor;
 
 import org.junit.Test;
 
