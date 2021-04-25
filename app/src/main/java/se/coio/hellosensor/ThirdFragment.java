@@ -1,6 +1,7 @@
 package se.coio.hellosensor;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -21,6 +22,7 @@ public class ThirdFragment extends Fragment implements SensorEventListener {
     private SensorManager sensorManager;
     private Sensor sensor;
     private TextView accelerometerTV;
+    private boolean wasFlat = false;
 
     @Override
     public View onCreateView(
@@ -71,8 +73,19 @@ public class ThirdFragment extends Fragment implements SensorEventListener {
         float y = Math.round(event.values[1]);
         float z = Math.round(event.values[2]);
 
+        if(z >= 9 && z <= 11 && Math.abs(x) < 1 && Math.abs(y) < 1) {
+            wasFlat = true;
+            if(!wasFlat){
 
-        accelerometerTV.setText("Accelerometer values: \nX: " + x + "\nY: " + y + "\nZ: " + z);
+            }
+            accelerometerTV.setText("Phone is flat!");
+            getView().setBackgroundColor(Color.GREEN);
+        } else {
+            wasFlat = false;
+            accelerometerTV.setText("Accelerometer values: \nX: " + x + "\nY: " + y + "\nZ: " + z);
+            getView().setBackgroundColor(Color.TRANSPARENT);
+        }
+
     }
 
     @Override
